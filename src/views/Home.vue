@@ -1,19 +1,29 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
+    <p>{{ coaches }}</p>
   </div>
 </template>
 
 <style></style>
 
 <script>
+  import axios from "axios"
   export default {
     data: function () {
       return {
-        message: "Welcome to Vue.js!",
+        coaches: []
       };
     },
-    created: function () {},
-    methods: {},
-  };
+    created: function () {
+      this.coachesIndex();
+    },
+    methods: {
+      coachesIndex: function(){
+        axios.get("/coaches").then((response) => {
+        console.log("coaches index", response);
+        this.coaches = response.data;
+      });
+    },
+  },
+};
 </script>
