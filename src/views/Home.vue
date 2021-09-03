@@ -1,6 +1,13 @@
 <template>
   <div class="home">
-    <p>{{ coaches }}</p>
+    <div v-for="coach in coaches">
+      <p> {{coach.name}} </p>
+      <div v-for="time_slot in coach.time_slots">
+        <p>{{time_slot.day}}:{{time_slot.time_slot}}-{{time_slot.status}}</p>
+        <p>{{time_slot.timezone}}</p>
+      </div>
+      <hr>
+    </div>
   </div>
 </template>
 
