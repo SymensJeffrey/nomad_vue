@@ -13,7 +13,7 @@
                 <div class="col-4" v-for="time_slot in coach.time_slots">
                   <p class="align-center">{{time_slot.day}}:{{time_slot.time_slot}}-{{time_slot.status}}</p>
                   <p class="timezone-text">{{time_slot.timezone}}</p>
-                  <p class="align-center"><button class="btn btn-outline-secondary book-button">Book</button></p>
+                  <p class="align-center"><button v-on:click="timeSlotUpdate(time_slot)" class="btn btn-outline-secondary book-button">Book</button></p>
                 </div>
               </div>
             </p>
@@ -47,7 +47,8 @@
   export default {
     data: function () {
       return {
-        coaches: []
+        coaches: [],
+        editTimeSlotParams: {}
       };
     },
     created: function () {
@@ -59,6 +60,12 @@
         console.log("coaches index", response);
         this.coaches = response.data;
       });
+    },
+    timeSlotUpdate: function (time_slot) {
+      var editTimeSlotParams
+      axios.patch("/time_slots/" + time_slot.id, editTimeSlotParams).then((response) => {
+        console.log(response);
+      })
     },
   },
 };
