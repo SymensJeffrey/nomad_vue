@@ -13,7 +13,7 @@
                 <div class="col-4" v-for="time_slot in coach.time_slots">
                   <p class="align-center">{{time_slot.day}}:{{time_slot.time_slot}}-{{time_slot.status}}</p>
                   <p class="timezone-text">{{time_slot.timezone}}</p>
-                  <p class="align-center"><a href="#" class="btn btn-primary">Go somewhere</a></p>
+                  <p class="align-center"><button class="btn btn-outline-secondary book-button">Book</button></p>
                 </div>
               </div>
             </p>
@@ -35,6 +35,10 @@
 }
 .align-center{
   text-align: center;
+}
+.book-button{
+  width: 80px;
+  height: 40px;
 }
 </style>
 
